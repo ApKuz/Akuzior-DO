@@ -1,4 +1,4 @@
-# This code creates new dataframs based on the field input to the cleandata() function
+# This code creates new dataframes based on the field input to the cleandata() function
 # creates a scatter mapbox plot of the data. 
 # The purpose of this code is to display the data in an interactive map 
 # that makes it easy to visualize the data.
