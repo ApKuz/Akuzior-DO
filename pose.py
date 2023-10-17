@@ -13,15 +13,10 @@ import utm
 # drop any rows where the transform column is NaN
 pDF = _df.dropna(subset=['pose'])
 
-# Creating two new columns for lattitude and longitude
-pDF['lat'] = ''
-pDF['lon'] = ''
-pDF['dataType'] = ''
 
 # narrowing the dataframe to only the below columns
-
 flags = ['timeField', 'pose', 'lat', 'lon', 'dataType']
-pDF = pDF[flags]
+pDF = pDF.reindex(columns=flags)
 
 # resseting the indicies as cutting out rows leaves gaps in the index
 pDF = pDF.reset_index()

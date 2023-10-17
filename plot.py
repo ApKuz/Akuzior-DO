@@ -1,15 +1,20 @@
-# This code concatenates the localization and transform DataFrames and 
+# This code creates new dataframs based on the field input to the cleandata() function
 # creates a scatter mapbox plot of the data. 
 # The purpose of this code is to display the data in an interactive map 
 # that makes it easy to visualize the data.
 
-from localization import *
-from transform import tDF
-from pose import pDF
+import pandas as pd
+import plotly.express as px
+from cleanData import cleanData
 
+# creating dataframs from these fields
+lDF = cleanData('localization')
+tDF = cleanData('transforms')
+pDF = cleanData('pose')
 
+# concatenating all dataframes into a singular one
 concatDF = pd.concat([lDF, tDF, pDF])
 
-fig = px.scatter_mapbox(concatDF, lat='lat', lon='lon', color='dataType')
-fig.update_layout(mapbox_style="open-street-map")
+# creating plot and opening it in browser
+fig = px.scatter_mapbox(concatDF, lat='lat', lon='lon', color='dataType', mapbox_style="open-street-map")
 fig.show()

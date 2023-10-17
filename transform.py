@@ -14,13 +14,10 @@ import utm
 # drop any rows where the transform column is NaN
 tDF = _df.dropna(subset=['transforms'])
 
-# Creating two new columns for lattitude and longitude
-tDF['lat'] = ''
-tDF['lon'] = ''
 
 # narrowing the dataframe to only the below columns
-flags = ['timeField', 'transforms', 'lat', 'lon']
-tDF = tDF[flags]
+flags = ['timeField', 'transforms', 'lat', 'lon', 'dataType']
+tDF = tDF.reindex(columns=flags)
 
 # reseting the indicies as cutting out rows leaves gaps in the index
 tDF = tDF.reset_index()
