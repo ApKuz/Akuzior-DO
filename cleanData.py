@@ -14,8 +14,7 @@ def cleanData(field):
     # drop any rows where the field column is NaN
     newDF = _df.dropna(subset=[field])
 
-
-    # narrowing the dataframe to only the below columns
+    # narrowing 
     flags = ['timeField', field, 'lat', 'lon', 'dataType']
     newDF = newDF.reindex(columns=flags)
 
@@ -30,8 +29,8 @@ def cleanData(field):
         
         if field == 'transforms':
             # extract easting and northing from transforms field
-            easting = newDF['transforms'][index][0]['transform']['translation']['x']
-            northing = newDF['transforms'][index][0]['transform']['translation']['y']
+            easting = newDF[field][index][0]['transform']['translation']['x']
+            northing = newDF[field][index][0]['transform']['translation']['y']
         else:
             # extracting easting and northing from localization or pose field
             easting = newDF[field][index]['position']['x']
@@ -56,5 +55,7 @@ def cleanData(field):
     newDF = newDF.dropna(subset=['lat'])
     newDF = newDF.dropna(subset=['lon'])
     
+
+
     # return new dataframe
     return newDF
