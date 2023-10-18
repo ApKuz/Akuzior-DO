@@ -16,5 +16,5 @@ pDF = cleanData('pose')
 concatDF = pd.concat([lDF, tDF, pDF])
 
 # creating plot and opening it in browser
-fig = px.scatter_mapbox(concatDF, lat='lat', lon='lon', color='dataType', mapbox_style="open-street-map")
+fig = px.scatter_mapbox(concatDF, lat='lat', lon='lon', color='currentVehicle', mapbox_style="open-street-map")
 fig.show()

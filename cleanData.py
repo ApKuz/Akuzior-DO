@@ -15,7 +15,7 @@ def cleanData(field):
     newDF = _df.dropna(subset=[field])
 
     # narrowing 
-    flags = ['timeField', field, 'lat', 'lon', 'dataType']
+    flags = ['timeField', field, 'lat', 'lon', 'dataType', 'passengerMsg']
     newDF = newDF.reindex(columns=flags)
 
     # resseting the indicies as cutting out rows leaves gaps in the index
